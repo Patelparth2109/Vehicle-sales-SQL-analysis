@@ -1,0 +1,85 @@
+🚗 Vehicle Sales SQL Analysis – Insights Summary
+🧾 Dataset Overview
+
+510,518 vehicle sales records analyzed across 38 U.S. states.
+
+Data includes: year, make, model, body, condition, odometer, seller, MMR (market rate), selling price, and sale date.
+
+Covers transactions from 1983–2015, representing a mix of dealerships and private sellers.
+
+📊 Key Insights
+1️⃣ Market Composition
+
+64 makes and 835 models identified — dominated by mainstream manufacturers.
+
+Ford leads all makes with ~12.3% market share; top models include F-150, Fusion, and Escape.
+
+Sedans remain the most common body type (43% of sales), followed by SUVs (26%) and Minivans (5%).
+
+2️⃣ Pricing Trends
+
+Average selling price: $13,602 across all vehicles.
+
+BMW SUVs achieved the highest average selling price ($38,947), followed by Land Rover and Mercedes-Benz.
+
+Luxury brands (BMW, Mercedes, Lexus) sell ~2.5× above overall average.
+
+3️⃣ Geographic Insights
+
+Florida recorded the highest sales volume (74,767 units), followed by California and Texas.
+
+Average price variation between top and bottom states exceeds $3,500, suggesting regional pricing disparities.
+
+Most sedans and SUVs are sold in Florida and California — reflecting dense urban markets.
+
+4️⃣ Time & Seasonality
+
+2012 had the highest annual sales (93,377 units).
+
+Long-term peak around 2013, with older years showing gradual decline.
+
+February emerged as the best sales month, followed by January and June — indicating early-year purchase surges.
+
+5️⃣ Condition & Mileage Effects
+
+Vehicles older than 10 years average 69,065 miles.
+
+Cars exceeding 100K miles drop sharply in value — average price falls by ~40%.
+
+Better condition ratings correspond to steady price lifts per rating point.
+
+6️⃣ Seller Performance
+
+Beck & Mastern Pontiac GMC Hummer Truck Inc ranked #1 in revenue ($426K, 40 units).
+
+Ford Motor Credit Company LLC achieved the highest total revenue across sellers.
+
+Sellers like Nissan-Infiniti consistently sold 8.3% above MMR, indicating strong pricing power.
+
+Rental/wholesale sellers (e.g., Enterprise Vehicle Exchange) averaged smaller margins (~4.6%).
+
+7️⃣ Depreciation & Value
+
+For top makes (Ford, Chevrolet, Toyota, Nissan, Honda):
+
+Average price declines 5–8% per model year.
+
+Luxury brands depreciate slower in percentage terms but higher in dollar value.
+
+Models with good condition + <50K miles + below MMR price were tagged as best-value deals.
+
+8️⃣ Color & Style Preferences
+
+Black and charcoal colors rank among top 3 in resale value.
+
+Green and yellow cars show the steepest price discounts — indicating limited buyer demand.
+
+🧮 Business Implications
+
+Dealers can focus marketing on SUV and Sedan inventory in high-volume states like FL, CA, TX.
+
+Condition and mileage are strongest predictors of value — key for appraisal models.
+
+Monitoring margin vs. MMR helps identify under-priced segments or high-margin dealers.
+
+Data supports dynamic pricing and targeted trade-in strategies by make and state.
