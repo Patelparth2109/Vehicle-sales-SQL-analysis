@@ -1,5 +1,15 @@
-							-- SECTION 1: DATA EXPLORATION & OVERVIEW (Queries 1-5)
+-- ====================================================================
+-- Vehicle Sales Analysis
+-- Author: Parth Patel
+-- Dialect: MySQL 8.0 (uses window functions and CTEs)
+-- Table: vehicle_sales (510,518 rows); see README for schema and setup
+--
+-- Each query is followed by a comment summarizing its result.
+-- ====================================================================
 
+-- ====================================================================
+-- SECTION 1: DATA EXPLORATION & OVERVIEW (Queries 1-5)
+-- ====================================================================
 
 -- 1) Dataset Overview: Total records and date range
 SELECT 
@@ -8,8 +18,8 @@ SELECT
     MAX(saledate_converted) as latest_sale
 FROM vehicle_sales;
 
-'Dataset contains 510,518 vehicle sales spanning 18 months (Jan 2014 - Jul 2015),
-providing a substantial sample size for analyzing post-recession automotive market trends.'
+-- Dataset contains 510,518 vehicle sales spanning 18 months (Jan 2014 - Jul 2015),
+-- providing a substantial sample size for analyzing post-recession automotive market trends.
 
 -- 2) Data Dimensions: Unique values across key attributes
 SELECT
@@ -19,19 +29,18 @@ SELECT
     COUNT(DISTINCT seller) as unique_sellers,
     COUNT(DISTINCT state) as unique_states
 FROM vehicle_sales;
-'
--- Dataset includes 64 unique makes and 835 models across 45 body types, 
-sold by 12,672 sellers in 38 states. 
--- The high seller count (12K+) indicates a fragmented distribution network, while limited state coverage suggests regional market focus 
-rather than full national representation.'
+-- Dataset includes 64 unique makes and 835 models across 45 body types,
+-- sold by 12,672 sellers in 38 states.
+-- The high seller count (12K+) indicates a fragmented distribution network, while limited state coverage suggests regional market focus
+-- rather than full national representation.
 
 -- 3) Price Overview: Average selling price across all vehicles
 SELECT ROUND(AVG(sellingprice), 2) as avg_sellingprice
 FROM vehicle_sales;
 
-'Average selling price of $13,602 positions this dataset in the mid-market segment,
-reflecting a mix of economy and mainstream vehicles with some luxury outliers.
-This baseline enables comparative analysis across makes, conditions, and mileage ranges.'
+-- Average selling price of $13,602 positions this dataset in the mid-market segment,
+-- reflecting a mix of economy and mainstream vehicles with some luxury outliers.
+-- This baseline enables comparative analysis across makes, conditions, and mileage ranges.
 
 -- 4) Vehicle Age Distribution: Sales volume by car make year
 SELECT 
@@ -41,10 +50,10 @@ FROM vehicle_sales
 GROUP BY year
 ORDER BY total_units DESC;
 
-'2012 models dominate sales at 93,377 units (18.3%), followed by 2013 (90,159) and 
-2014 (72,913). This concentration on 2-4 year old vehicles reflects the used car 
-sweet spot—past initial depreciation but still reliable, appealing to value-conscious 
-buyers seeking newer features without new-car premiums.'
+-- 2012 models dominate sales at 93,377 units (18.3%), followed by 2013 (90,159) and
+-- 2014 (72,913). This concentration on 2-4 year old vehicles reflects the used car
+-- sweet spot—past initial depreciation but still reliable, appealing to value-conscious
+-- buyers seeking newer features without new-car premiums.
 
 -- 5) Geographic Reach: Sales distribution by state
 SELECT 
@@ -55,13 +64,14 @@ FROM vehicle_sales
 GROUP BY state
 ORDER BY total_sales DESC;
 
-'Florida leads with 74,767 sales (14.6%), followed by California (67,677, 13.3%) and 
-Pennsylvania (50,892, 10.0%). These three states account for 38% of total volume, 
-driven by large populations and strong automotive markets. Florida's '
-#1 position may reflect favorable climate extending vehicle lifespans and attracting retirees.'
+-- Florida leads with 74,767 sales (14.6%), followed by California (67,677, 13.3%) and
+-- Pennsylvania (50,892, 10.0%). These three states account for 38% of total volume,
+-- driven by large populations and strong automotive markets. Florida's
+-- #1 position may reflect favorable climate extending vehicle lifespans and attracting retirees.
 
-									-- SECTION 2: MARKET ANALYSIS (Queries 6-10)
-
+-- ====================================================================
+-- SECTION 2: MARKET ANALYSIS (Queries 6-10)
+-- ====================================================================
 
 -- 6) Market Share Analysis: Top 10 makes by volume
 SELECT 
@@ -73,10 +83,10 @@ GROUP BY make
 ORDER BY units DESC
 LIMIT 10;
 
-'Ford dominates with 80,937 units (15.85% market share), followed by Chevrolet 
-(56,870, 11.14%) and Nissan (49,126, 9.62%). Top 3 brands control 36.6% of the 
-market, indicating moderate concentration. Ford's ' leadership reflects strong brand 
-loyalty and extensive dealer network, particularly for F-Series trucks.'
+-- Ford dominates with 80,937 units (15.85% market share), followed by Chevrolet
+-- (56,870, 11.14%) and Nissan (49,126, 9.62%). Top 3 brands control 36.6% of the
+-- market, indicating moderate concentration. Ford's leadership reflects strong brand
+-- loyalty and extensive dealer network, particularly for F-Series trucks.
 
 -- 7) Top Make Deep Dive: Most popular models within leading brand
 WITH top_make AS (
@@ -157,8 +167,9 @@ ORDER BY total_units DESC;
 -- have increased purchasing power. July's slowest performance likely reflects summer 
 -- vacation spending competition and dealership inventory constraints mid-model-year.
 
-										-- SECTION 3: PRICING ANALYSIS (Queries 11-15)
-
+-- ====================================================================
+-- SECTION 3: PRICING ANALYSIS (Queries 11-15)
+-- ====================================================================
 
 -- 11) Premium Vehicles: Top 10 most expensive sales
 SELECT 
@@ -248,8 +259,9 @@ ORDER BY avg_sellingprice DESC;
 -- and mechanical reliability barrier, creating optimal buy opportunities for budget-conscious 
 -- buyers and urgent sell signals for owners approaching this milestone.
 
-									-- SECTION 4: DEPRECIATION & VALUE ANALYSIS (Queries 16-17)
-
+-- ====================================================================
+-- SECTION 4: DEPRECIATION & VALUE ANALYSIS (Queries 16-17)
+-- ====================================================================
 
 -- 16) Vehicle Age Impact: Odometer readings for older vehicles
 SELECT 
@@ -301,8 +313,9 @@ ORDER BY make, year;
 -- brands show erratic patterns, with sharp drops after initial years, creating both 
 -- risk for sellers and value opportunities for strategic buyers.
 
-								-- SECTION 5: SELLER & MARKET PERFORMANCE (Queries 18-20)
-
+-- ====================================================================
+-- SECTION 5: SELLER & MARKET PERFORMANCE (Queries 18-20)
+-- ====================================================================
 
 -- 18) Top Sellers by Revenue: Total sales and volume
 SELECT 
